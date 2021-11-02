@@ -3,6 +3,7 @@ package com.webserver1.core;
 
 import com.webserver1.http.HttpRequest;
 import com.webserver1.http.HttpResponse;
+import com.webserver1.servlets.LoginServlet;
 import com.webserver1.servlets.RegServlet;
 
 import java.io.File;
@@ -46,6 +47,9 @@ public class ClientHandler implements Runnable{
             //判断该请求是否为请求业务
             if("/myweb/reg".equals(url)){
                 RegServlet servlet=new RegServlet();
+                servlet.service(request,response);
+            }else if("/myweb/login".equals(url)){
+                LoginServlet servlet=new LoginServlet();
                 servlet.service(request,response);
             }else{
                 //2.2:根据资源路径去webapps目录中寻找该资源
