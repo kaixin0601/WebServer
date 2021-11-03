@@ -5,6 +5,7 @@ import com.webserver1.http.HttpRequest;
 import com.webserver1.http.HttpResponse;
 import com.webserver1.servlets.LoginServlet;
 import com.webserver1.servlets.RegServlet;
+import com.webserver1.servlets.UpdateServlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +51,9 @@ public class ClientHandler implements Runnable{
                 servlet.service(request,response);
             }else if("/myweb/login".equals(url)){
                 LoginServlet servlet=new LoginServlet();
+                servlet.service(request,response);
+            }else if("/myweb/update".equals(url)){
+                UpdateServlet servlet=new UpdateServlet();
                 servlet.service(request,response);
             }else{
                 //2.2:根据资源路径去webapps目录中寻找该资源
